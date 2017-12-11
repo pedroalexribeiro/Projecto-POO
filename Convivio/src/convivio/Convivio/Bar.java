@@ -6,14 +6,19 @@
 package convivio.Convivio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author pedro
  */
-public abstract class Local implements Serializable{
-    private double longitude;
-    private double latitude;
-    
-    abstract double getCusto();
+public class Bar extends Local implements Serializable{
+    private int lotacao;
+    private double consumoMinimo;
+    private ArrayList<Pessoa> guestlist;
+
+    @Override
+    double getCusto() {
+        return consumoMinimo;
+    }
 }

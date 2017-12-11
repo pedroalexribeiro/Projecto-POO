@@ -6,14 +6,12 @@
 package convivio.Convivio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author pedro
  */
-public abstract class Local implements Serializable{
-    private double longitude;
-    private double latitude;
-    
-    abstract double getCusto();
+public class AreaDesportiva extends Parque implements Serializable{
+    private ArrayList<String> desportosPraticaveis;
 }

@@ -11,9 +11,12 @@ import java.io.Serializable;
  *
  * @author pedro
  */
-public abstract class Local implements Serializable{
-    private double longitude;
-    private double latitude;
-    
-    abstract double getCusto();
+public class Exposicao extends Local implements Serializable{
+    private String formaArtistica;
+    private double custoIngresso;
+
+    @Override
+    double getCusto() {
+        return custoIngresso;
+    }
 }

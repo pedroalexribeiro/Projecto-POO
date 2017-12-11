@@ -11,9 +11,6 @@ import java.io.Serializable;
  *
  * @author pedro
  */
-public abstract class Local implements Serializable{
-    private double longitude;
-    private double latitude;
-    
-    abstract double getCusto();
+public class Jardim extends Parque implements Serializable{
+    private double area;
 }
