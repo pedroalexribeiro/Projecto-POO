@@ -11,8 +11,7 @@ import java.io.Serializable;
  *
  * @author pedro
  */
-public class Pessoa implements Serializable{
-    private String nome;
-    private String perfil;
-    private String password;
+public class Local implements Serializable{
+    private double longitude;
+    private double latitude;
 }
