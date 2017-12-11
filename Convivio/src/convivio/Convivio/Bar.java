@@ -17,8 +17,15 @@ public class Bar extends Local implements Serializable{
     private double consumoMinimo;
     private ArrayList<Pessoa> guestlist;
 
+    public Bar(int lotacao, double consumoMinimo, double longitude, double latitude) {
+        super(longitude, latitude);
+        this.lotacao = lotacao;
+        this.consumoMinimo = consumoMinimo;
+        this.guestlist = new ArrayList<>();
+    }
+
     @Override
-    double getCusto() {
+    public double getCusto() {
         return consumoMinimo;
     }
 }

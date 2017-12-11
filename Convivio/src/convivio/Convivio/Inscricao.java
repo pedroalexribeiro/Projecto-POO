@@ -14,4 +14,10 @@ import java.io.Serializable;
 public class Inscricao implements Serializable{
     private Pessoa pessoa;
     private Local local;
+
+    public Inscricao(Pessoa pessoa, Local local) {
+        this.pessoa = pessoa;
+        this.local = local;
+    }
+    
 }

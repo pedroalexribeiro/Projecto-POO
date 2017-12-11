@@ -15,8 +15,14 @@ public class Exposicao extends Local implements Serializable{
     private String formaArtistica;
     private double custoIngresso;
 
+    public Exposicao(String formaArtistica, double custoIngresso, double longitude, double latitude) {
+        super(longitude, latitude);
+        this.formaArtistica = formaArtistica;
+        this.custoIngresso = custoIngresso;
+    }
+
     @Override
-    double getCusto() {
+    public double getCusto() {
         return custoIngresso;
     }
 }

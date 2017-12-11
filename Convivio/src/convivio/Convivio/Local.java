@@ -14,6 +14,11 @@ import java.io.Serializable;
 public abstract class Local implements Serializable{
     private double longitude;
     private double latitude;
+
+    public Local(double longitude, double latitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
     
-    abstract double getCusto();
+    public abstract double getCusto();
 }

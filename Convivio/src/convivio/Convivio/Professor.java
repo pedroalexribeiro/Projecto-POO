@@ -13,4 +13,9 @@ import java.io.Serializable;
  */
 public class Professor extends Pessoa implements Serializable{
     private String tipoProfessor;
+
+    public Professor(String nome, String perfil, String password, String tipoProfessor) {
+        super(nome, perfil, password);
+        this.tipoProfessor = tipoProfessor;
+    }
 }

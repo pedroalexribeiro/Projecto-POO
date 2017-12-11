@@ -12,8 +12,12 @@ import java.io.Serializable;
  * @author pedro
  */
 public abstract class Parque extends Local implements Serializable{
+    public Parque(double longitude, double latitude) {
+        super(longitude, latitude);
+    }    
+    
     @Override
-    double getCusto() {
+    public double getCusto() {
         return 0;
     }
 }

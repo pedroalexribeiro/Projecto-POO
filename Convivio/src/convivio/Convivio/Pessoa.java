@@ -11,8 +11,32 @@ import java.io.Serializable;
  *
  * @author pedro
  */
-public class Pessoa implements Serializable{
+public abstract class Pessoa implements Serializable{
     private String nome;
     private String perfil;
     private String password;
+
+    public Pessoa(String nome, String perfil, String password) {
+        this.nome = nome;
+        this.perfil = perfil;
+        this.password = password;
+    }
+    
+    public double calcularDespesa(){
+        System.out.println("Têm de me fazer ainda.");
+        return 0;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
 }

@@ -13,4 +13,9 @@ import java.io.Serializable;
  */
 public class Funcionario extends Pessoa implements Serializable{
     private String tempoTrabalho;
+
+    public Funcionario(String nome, String perfil, String password, String tempoTrabalho) {
+        super(nome, perfil, password);
+        this.tempoTrabalho = tempoTrabalho;
+    }
 }
