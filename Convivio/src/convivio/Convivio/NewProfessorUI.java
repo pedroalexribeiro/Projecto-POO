@@ -44,6 +44,7 @@ public class NewProfessorUI extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Criar um novo Professor");
@@ -153,7 +154,7 @@ public class NewProfessorUI extends javax.swing.JFrame {
         if(username == null || username.trim().equals("")){
             JOptionPane.showMessageDialog(null, "Nome não pode estar vazio!", "InfoBox: Username", JOptionPane.INFORMATION_MESSAGE);
         }
-        else if(password == null || password.trim().equals("")){
+        else if(password.trim().equals("")){
             JOptionPane.showMessageDialog(null, "Passoword não pode estar vazia!", "InfoBox: Password", JOptionPane.INFORMATION_MESSAGE);
         }else{
             String perfil = perfilComboBox.getSelectedItem().toString();

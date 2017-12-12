@@ -5,6 +5,8 @@
  */
 package convivio.Convivio;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pedro
@@ -30,25 +32,47 @@ public class NewStudentUI extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nomeTF = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        perfilComboBox = new javax.swing.JComboBox<>();
+        passwordTF = new javax.swing.JPasswordField();
+        cursoComboBox = new javax.swing.JComboBox<>();
+        criarButton = new javax.swing.JButton();
+        cancelarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Criar um novo Aluno");
 
         jLabel2.setText("Nome:");
 
-        jTextField1.setText("jTextField1");
-
         jLabel3.setText("Perfil:");
 
         jLabel4.setText("Password:");
 
         jLabel5.setText("O curso do aluno é:");
+
+        perfilComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desportivo", "Cultural", "Boémio", "Poupadinho" }));
+
+        cursoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM" }));
+
+        criarButton.setText("Criar");
+        criarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarButtonActionPerformed(evt);
+            }
+        });
+
+        cancelarButton.setText("Cancelar");
+        cancelarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,40 +85,99 @@ public class NewStudentUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addContainerGap(275, Short.MAX_VALUE))
+                        .addComponent(nomeTF))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(perfilComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cursoComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(passwordTF)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(criarButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addComponent(cancelarButton)
+                .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(perfilComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cursoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(criarButton)
+                    .addComponent(cancelarButton))
+                .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        importantFrame.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelarButtonActionPerformed
+
+    private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
+        // TODO add your handling code here:
+        String username = nomeTF.getText();
+        char []prePassword = passwordTF.getPassword();
+        String password = new String(prePassword);
+        if(username == null || username.trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Nome não pode estar vazio!", "InfoBox: Username", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(password.trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Passoword não pode estar vazia!", "InfoBox: Password", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            String perfil = perfilComboBox.getSelectedItem().toString();
+            String type = cursoComboBox.getSelectedItem().toString();
+            importantFrame.addPessoa(new Professor(username, perfil, password, type));
+            JOptionPane.showMessageDialog(null, "Aluno criado com sucesso!", "InfoBox: Novo Aluno", JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+            importantFrame.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_criarButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelarButton;
+    private javax.swing.JButton criarButton;
+    private javax.swing.JComboBox<String> cursoComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nomeTF;
+    private javax.swing.JPasswordField passwordTF;
+    private javax.swing.JComboBox<String> perfilComboBox;
     // End of variables declaration//GEN-END:variables
 }
