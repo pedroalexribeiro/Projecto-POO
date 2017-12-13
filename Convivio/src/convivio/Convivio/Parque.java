@@ -12,12 +12,17 @@ import java.io.Serializable;
  * @author pedro
  */
 public abstract class Parque extends Local implements Serializable{
-    public Parque(double longitude, double latitude) {
-        super(longitude, latitude);
+    public Parque(String nome, double longitude, double latitude) {
+        super(nome, longitude, latitude);
     }    
     
     @Override
     public double getCusto() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Parque: " + getNome() + " -> Número de Inscritos: " + getPessoasInscritas() +'.';
     }
 }

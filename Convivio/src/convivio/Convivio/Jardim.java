@@ -14,8 +14,8 @@ import java.io.Serializable;
 public class Jardim extends Parque implements Serializable{
     private double area;
 
-    public Jardim(double area, double longitude, double latitude) {
-        super(longitude, latitude);
+    public Jardim(String nome, double area, double longitude, double latitude) {
+        super(nome, longitude, latitude);
         this.area = area;
     }
 }

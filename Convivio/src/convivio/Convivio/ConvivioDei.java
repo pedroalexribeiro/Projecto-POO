@@ -21,6 +21,10 @@ public class ConvivioDei {
         this.listaPessoasInscritas = new ArrayList<>();
         this.listaLocais = new ArrayList<>();
     }
+
+    public String getNome() {
+        return nome;
+    }
     
     public void adicionarLocal(Local local){
         this.listaLocais.add(local);
@@ -36,5 +40,21 @@ public class ConvivioDei {
     
     public void printLocais(){
         System.out.println("Ainda estou por acabar.");
+    }
+    
+    public boolean isPersonRegistered(Pessoa p){
+        if(listaPessoasInscritas.contains(p)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public String getInfoLocais(){
+        String infoLocal = "";
+        for(Local local : listaLocais){
+            infoLocal += local + "\n";
+        }
+        return infoLocal;
     }
 }

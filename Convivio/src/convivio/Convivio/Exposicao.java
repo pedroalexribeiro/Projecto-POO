@@ -15,8 +15,8 @@ public class Exposicao extends Local implements Serializable{
     private String formaArtistica;
     private double custoIngresso;
 
-    public Exposicao(String formaArtistica, double custoIngresso, double longitude, double latitude) {
-        super(longitude, latitude);
+    public Exposicao(String nome, String formaArtistica, double custoIngresso, double longitude, double latitude) {
+        super(nome, longitude, latitude);
         this.formaArtistica = formaArtistica;
         this.custoIngresso = custoIngresso;
     }
@@ -24,5 +24,10 @@ public class Exposicao extends Local implements Serializable{
     @Override
     public double getCusto() {
         return custoIngresso;
+    }
+
+    @Override
+    public String toString() {
+        return "Exposição: " + getNome() + " -> Número de Inscritos: " + getPessoasInscritas() +'.';
     }
 }

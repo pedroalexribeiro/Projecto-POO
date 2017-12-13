@@ -12,10 +12,21 @@ import java.io.Serializable;
  * @author pedro
  */
 public abstract class Local implements Serializable{
+    private String nome;
     private double longitude;
     private double latitude;
+    private int pessoasInscritas = 0;
 
-    public Local(double longitude, double latitude) {
+    public int getPessoasInscritas() {
+        return pessoasInscritas;
+    }
+    
+     protected String getNome() {
+        return nome;
+    }
+
+    public Local(String nome, double longitude, double latitude) {
+        this.nome = nome;
         this.longitude = longitude;
         this.latitude = latitude;
     }

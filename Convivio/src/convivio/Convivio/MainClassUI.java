@@ -44,6 +44,11 @@ public class MainClassUI extends javax.swing.JFrame {
         titleLabel.setText("Convívios do DEI");
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         criarUserButton.setText("Criar um novo utilizador");
         criarUserButton.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +104,12 @@ public class MainClassUI extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_fecharButtonActionPerformed
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new LoginUI(this).setVisible(true);
+    }//GEN-LAST:event_loginButtonActionPerformed
+
     public void addPessoa(Pessoa p){
         listaPessoas.add(p);
     }
@@ -107,6 +118,26 @@ public class MainClassUI extends javax.swing.JFrame {
         listaConvivios.add(c);
     }
     
+    public Pessoa searchPessoa(String s){
+        for(Pessoa p : listaPessoas){
+            if(s.equals(p.getNome())){
+                return p;
+            }
+        }
+        return null;
+    }
+    
+    public boolean isPasswordCorrect(Pessoa p, String password){
+        if(password.equals(p.getPassword())){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public ArrayList<ConvivioDei> getListaConvivios() {
+        return listaConvivios;
+    }
     /**
      * @param args the command line arguments
      */
