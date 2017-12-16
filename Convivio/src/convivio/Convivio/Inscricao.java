@@ -20,4 +20,15 @@ public class Inscricao implements Serializable{
         this.local = local;
     }
     
+    public double getReceita(){
+        return pessoa.calcularDespesa(local.getCusto(), local.getDesconto());
+    }
+    
+    public String getNomePessoa(){
+        return pessoa.getNome();
+    }
+    
+    public String getNomeLocal(){
+        return local.getNome();
+    }
 }

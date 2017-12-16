@@ -21,6 +21,7 @@ public class MainClassUI extends javax.swing.JFrame {
         initComponents();
         this.listaConvivios = new ArrayList<>();
         this.listaPessoas = new ArrayList<>();
+        teste();
     }
 
     /**
@@ -110,6 +111,10 @@ public class MainClassUI extends javax.swing.JFrame {
         new LoginUI(this).setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    public ArrayList<Pessoa> getListaPessoas() {
+        return listaPessoas;
+    }
+
     public void addPessoa(Pessoa p){
         listaPessoas.add(p);
     }
@@ -137,6 +142,35 @@ public class MainClassUI extends javax.swing.JFrame {
 
     public ArrayList<ConvivioDei> getListaConvivios() {
         return listaConvivios;
+    }
+    
+    public ConvivioDei getConvivio(String nome){
+        for(ConvivioDei cv : listaConvivios){
+            if(cv.getNome().equals(nome)){
+                return cv;
+            }
+        }
+        return null;
+    }
+    
+    public int inscreverEmLocal(ConvivioDei c, Pessoa p, Local l){
+        int index = listaConvivios.indexOf(c);
+        int flag = listaConvivios.get(index).inscreverEmLocal(p,l);
+        return flag;
+    }
+    
+    public void desisncreverDeLocal(ConvivioDei c, Pessoa p, Local l){
+        int index = listaConvivios.indexOf(c);
+        listaConvivios.get(index).desinscreverDeLocal(p.getNome(), l);
+    }
+    
+    public void teste(){
+        Bar teste1 = new Bar("Moelas", 60, 5, 45.6, 54.3);
+        Bar teste3 = new Bar("24", 50, 5, 45.3, 43.4);
+        ConvivioDei teste2 = new ConvivioDei("Sou um teste");
+        teste2.adicionarLocal(teste1);
+        teste2.adicionarLocal(teste3);
+        listaConvivios.add(teste2);
     }
     /**
      * @param args the command line arguments

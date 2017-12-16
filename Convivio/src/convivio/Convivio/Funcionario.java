@@ -18,4 +18,11 @@ public class Funcionario extends Pessoa implements Serializable{
         super(nome, perfil, password);
         this.tempoTrabalho = tempoTrabalho;
     }
+
+    @Override
+    public String toString() {
+        return getNome() + ", " + getPerfil() + ".";
+    }
+    
+    
 }

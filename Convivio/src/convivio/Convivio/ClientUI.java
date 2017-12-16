@@ -55,6 +55,11 @@ public class ClientUI extends javax.swing.JFrame {
         });
 
         inscreverConvButton.setText("Inscrever num convívio");
+        inscreverConvButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inscreverConvButtonActionPerformed(evt);
+            }
+        });
 
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +123,12 @@ public class ClientUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_listConviviosButtonActionPerformed
+
+    private void inscreverConvButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscreverConvButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new InscreverConvivioUI(importantFrame, this, pessoa).setVisible(true);        
+    }//GEN-LAST:event_inscreverConvButtonActionPerformed
 
     public Pessoa getPessoa() {
         return pessoa;

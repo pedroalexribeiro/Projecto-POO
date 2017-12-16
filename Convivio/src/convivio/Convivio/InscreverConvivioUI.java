@@ -141,11 +141,15 @@ public class InscreverConvivioUI extends javax.swing.JFrame {
                 break;
             }
         }if(convivio != null){
-            convivio.inscreverPessoa(pessoa);
-            JOptionPane.showMessageDialog(null, "Inscrição feita com sucesso!", "InfoBox: Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
-            clientFrame.setVisible(true);
-            this.dispose();
+            if(convivio.isPersonRegistered(pessoa)){
+                JOptionPane.showMessageDialog(null, "Já está inscrito neste convívio!", "InfoBox: Repetição", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                convivio.inscreverPessoa(pessoa);
+                JOptionPane.showMessageDialog(null, "Inscrição feita com sucesso!", "InfoBox: Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+                clientFrame.setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_inscreverButtonActionPerformed
 

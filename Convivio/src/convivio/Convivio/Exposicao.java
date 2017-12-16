@@ -22,6 +22,11 @@ public class Exposicao extends Local implements Serializable{
     }
 
     @Override
+    public double getDesconto(){
+        return 0.10;
+    }
+    
+    @Override
     public double getCusto() {
         return custoIngresso;
     }

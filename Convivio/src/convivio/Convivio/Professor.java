@@ -18,4 +18,11 @@ public class Professor extends Pessoa implements Serializable{
         super(nome, perfil, password);
         this.tipoProfessor = tipoProfessor;
     }
+
+    @Override
+    public String toString() {
+        return getNome() + ", " + getPerfil() + ".";
+    }
+    
+    
 }

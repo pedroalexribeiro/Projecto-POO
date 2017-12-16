@@ -148,7 +148,7 @@ public class ListaConviviosUI extends javax.swing.JFrame {
             }
         }
         this.setVisible(false);
-        new InsideConvUI(importantFrame, clientFrame, convivio, pessoa).setVisible(true);
+        new InsideConvUI(importantFrame, clientFrame, convivio.getNome(), pessoa).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_entrarButtonActionPerformed
 

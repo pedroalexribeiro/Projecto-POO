@@ -18,4 +18,16 @@ public class Aluno extends Pessoa implements Serializable{
         super(nome, perfil, password);
         this.nomeCurso = nomeCurso;
     }
+    
+    @Override
+    public double calcularDespesa(double preco, double promocao){
+        return preco - (preco * promocao);
+    }
+
+    @Override
+    public String toString() {
+        return getNome() + ", " + getPerfil() + ", " + nomeCurso + ".";
+    }
+    
+    
 }

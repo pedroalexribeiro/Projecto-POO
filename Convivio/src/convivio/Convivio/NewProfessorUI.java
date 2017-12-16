@@ -5,6 +5,7 @@
  */
 package convivio.Convivio;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -157,13 +158,25 @@ public class NewProfessorUI extends javax.swing.JFrame {
         else if(password.trim().equals("")){
             JOptionPane.showMessageDialog(null, "Passoword não pode estar vazia!", "InfoBox: Password", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            String perfil = perfilComboBox.getSelectedItem().toString();
-            String type = professorComboBox.getSelectedItem().toString();
-            importantFrame.addPessoa(new Professor(username, perfil, password, type));
-            JOptionPane.showMessageDialog(null, "Professor criado com sucesso!", "InfoBox: Novo Professor", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
-            importantFrame.setVisible(true);
-            this.dispose();
+            boolean nomeAlreadyExists = false;
+            ArrayList<Pessoa> listaPessoas = importantFrame.getListaPessoas();
+            for(Pessoa p : listaPessoas){
+                if(p.getNome().equals(username)){
+                    nomeAlreadyExists = true;
+                    break;
+                }
+            }
+            if(nomeAlreadyExists){
+                JOptionPane.showMessageDialog(null, "Já existe uma pessoa com esse nome!", "InfoBox: Nome", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                String perfil = perfilComboBox.getSelectedItem().toString();
+                String type = professorComboBox.getSelectedItem().toString();
+                importantFrame.addPessoa(new Professor(username, perfil, password, type));
+                JOptionPane.showMessageDialog(null, "Professor criado com sucesso!", "InfoBox: Novo Professor", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+                importantFrame.setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_criaButtonActionPerformed
 

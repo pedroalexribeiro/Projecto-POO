@@ -31,5 +31,21 @@ public abstract class Local implements Serializable{
         this.latitude = latitude;
     }
     
+    public void incrementarPessoasIns(){
+        pessoasInscritas++;
+    }
+    
+    public void decrementarPessoasIns(){
+        pessoasInscritas--;
+    }
+    
+    public double getDesconto(){
+        return 0;
+    }
+    
+    public boolean isBar(){
+        return false;
+    }
+    
     public abstract double getCusto();
 }

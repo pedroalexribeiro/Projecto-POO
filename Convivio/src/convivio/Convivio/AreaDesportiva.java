@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class AreaDesportiva extends Parque implements Serializable{
     private ArrayList<String> desportosPraticaveis;
 
-    public AreaDesportiva(String nome, double longitude, double latitude) {
+    public AreaDesportiva(String nome, double longitude, double latitude, ArrayList<String> desportos) {
         super(nome, longitude, latitude);
-        this.desportosPraticaveis = new ArrayList<>();
+        this.desportosPraticaveis = desportos;
     }  
 }

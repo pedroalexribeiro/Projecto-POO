@@ -22,9 +22,8 @@ public abstract class Pessoa implements Serializable{
         this.password = password;
     }
     
-    public double calcularDespesa(){
-        System.out.println("Têm de me fazer ainda.");
-        return 0;
+    public double calcularDespesa(double preco, double promocao){
+        return preco;
     }
 
     public String getNome() {
