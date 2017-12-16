@@ -23,6 +23,13 @@ public class ConvivioDei {
         this.listaLocais = new ArrayList<>();
         this.inscricoes = new ArrayList<>();
     }
+    
+    public ConvivioDei(String nome, ArrayList<Pessoa> listaPessoasInscritas, ArrayList<Local> listaLocais){
+        this.nome = nome;
+        this.listaPessoasInscritas = listaPessoasInscritas;
+        this.listaLocais = listaLocais;
+        this.inscricoes = new ArrayList<>();
+    }
 
     public ArrayList<Inscricao> getInscricoes() {
         return inscricoes;
