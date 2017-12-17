@@ -59,7 +59,6 @@ public class InscreverConvivioUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         locaisTextArea = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -34,7 +34,6 @@ public class NewUserUI extends javax.swing.JFrame {
         criarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

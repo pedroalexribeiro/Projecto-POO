@@ -43,7 +43,6 @@ public class NewStudentUI extends javax.swing.JFrame {
         criarButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

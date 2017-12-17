@@ -55,7 +55,6 @@ public class NewExposicaoUI extends javax.swing.JFrame {
         formaArtisticaTF = new javax.swing.JTextField();
         precoTF = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

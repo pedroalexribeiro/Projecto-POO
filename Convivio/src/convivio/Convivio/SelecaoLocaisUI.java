@@ -68,7 +68,6 @@ public class SelecaoLocaisUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         retornarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 

@@ -52,7 +52,6 @@ public class ApresentacaoLocaisUI extends javax.swing.JFrame {
         infoLocaisTextArea = new javax.swing.JTextArea();
         retornarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -42,7 +42,6 @@ public class ClientUI extends javax.swing.JFrame {
         inscreverConvButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -1,5 +1,6 @@
 package convivio.Convivio;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
@@ -42,6 +43,11 @@ public class MainClassUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Convívios do DEI");
@@ -112,6 +118,13 @@ public class MainClassUI extends javax.swing.JFrame {
         this.setVisible(false);
         new LoginUI(this).setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getRootPane().setDefaultButton(loginButton);
+        }
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      *

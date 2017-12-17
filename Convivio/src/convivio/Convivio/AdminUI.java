@@ -28,14 +28,17 @@ public class AdminUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel1 = new javax.swing.JLabel();
         criarConvivioButton = new javax.swing.JButton();
         criarLocalButton = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sairButton, org.jdesktop.beansbinding.ObjectProperty.create(), this, org.jdesktop.beansbinding.BeanProperty.create("defaultCloseOperation"));
+        bindingGroup.addBinding(binding);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Bem-vindo Admin!");
@@ -78,6 +81,8 @@ public class AdminUI extends javax.swing.JFrame {
                 .addComponent(sairButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
 
         pack();
         setLocationRelativeTo(null);
@@ -135,5 +140,6 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton criarLocalButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton sairButton;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -60,7 +60,6 @@ public class InsideConvUI extends javax.swing.JFrame {
 
         jButton4.setText("jButton4");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

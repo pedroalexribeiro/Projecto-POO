@@ -54,7 +54,6 @@ public class NewAreaDesportivaUI extends javax.swing.JFrame {
         nomeTF = new javax.swing.JTextField();
         desportosTF = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -1,5 +1,6 @@
 package convivio.Convivio;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,8 +39,12 @@ public class LoginUI extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
         cancelarButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Login");
@@ -47,6 +52,18 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel2.setText("Nome:");
 
         jLabel3.setText("Password:");
+
+        passwordTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordTFKeyPressed(evt);
+            }
+        });
+
+        nomeTF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nomeTFKeyPressed(evt);
+            }
+        });
 
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +167,27 @@ public class LoginUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getRootPane().setDefaultButton(loginButton);
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void nomeTFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomeTFKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getRootPane().setDefaultButton(loginButton);
+        }
+    }//GEN-LAST:event_nomeTFKeyPressed
+
+    private void passwordTFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTFKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getRootPane().setDefaultButton(loginButton);
+        }
+    }//GEN-LAST:event_passwordTFKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

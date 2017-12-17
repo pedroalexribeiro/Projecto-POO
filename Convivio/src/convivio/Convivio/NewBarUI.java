@@ -55,7 +55,6 @@ public class NewBarUI extends javax.swing.JFrame {
         lotacaoTF = new javax.swing.JTextField();
         consumoTF = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
