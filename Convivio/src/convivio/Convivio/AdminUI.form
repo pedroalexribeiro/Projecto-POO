@@ -4,9 +4,6 @@
   <Properties>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
-  <BindingProperties>
-    <BindingProperty name="defaultCloseOperation" source="sairButton" target="Form" targetPath="defaultCloseOperation" updateStrategy="0" immediately="false"/>
-  </BindingProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -67,6 +64,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Criar novo local"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="criarLocalButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="sairButton">
       <Properties>

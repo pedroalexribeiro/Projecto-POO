@@ -28,7 +28,6 @@ public class AdminUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel1 = new javax.swing.JLabel();
         criarConvivioButton = new javax.swing.JButton();
@@ -36,9 +35,6 @@ public class AdminUI extends javax.swing.JFrame {
         sairButton = new javax.swing.JButton();
 
         setResizable(false);
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, sairButton, org.jdesktop.beansbinding.ObjectProperty.create(), this, org.jdesktop.beansbinding.BeanProperty.create("defaultCloseOperation"));
-        bindingGroup.addBinding(binding);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Bem-vindo Admin!");
@@ -51,6 +47,11 @@ public class AdminUI extends javax.swing.JFrame {
         });
 
         criarLocalButton.setText("Criar novo local");
+        criarLocalButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarLocalButtonActionPerformed(evt);
+            }
+        });
 
         sairButton.setText("Sair");
         sairButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,8 +83,6 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bindingGroup.bind();
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -100,6 +99,12 @@ public class AdminUI extends javax.swing.JFrame {
         this.setVisible(false);
         new NewConvivioUI(this).setVisible(true);
     }//GEN-LAST:event_criarConvivioButtonActionPerformed
+
+    private void criarLocalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarLocalButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new NewLocalUI(this).setVisible(true);
+    }//GEN-LAST:event_criarLocalButtonActionPerformed
 
     /**
     * Adiciona um convívio à lista de convivios.
@@ -140,6 +145,5 @@ public class AdminUI extends javax.swing.JFrame {
     private javax.swing.JButton criarLocalButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton sairButton;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
