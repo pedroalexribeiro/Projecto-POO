@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 /**
- *
- * @author pedro
+ * Classe NewUserUI serve para o utilzador que tipo de pessoa vai criar, ou "Professor"
+ * ou "Funcionario" ou "Aluno".
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class NewUserUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
     /**
      * Creates new form NewUserUI
+     * @param importantFrame Objecto da classe MainClassUI.
      */
     public NewUserUI(MainClassUI importantFrame) {
         initComponents();

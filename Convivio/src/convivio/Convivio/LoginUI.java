@@ -1,20 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author pedro
+ * Classe LoginUI serve para a realização do login por parte do utilizador através
+ * de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class LoginUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
     /**
      * Creates new form LoginUI
+     * @param importantFrame Objecto da classe MainClassUI.
      */
     public LoginUI(MainClassUI importantFrame) {
         initComponents();

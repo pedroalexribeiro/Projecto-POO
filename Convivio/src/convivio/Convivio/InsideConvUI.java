@@ -1,28 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author pedro
+ * Classe InsideConvUI serve para disponibilizar ao utilizador 
+ * diferentes ações dentro de um convívio através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class InsideConvUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
+    /**
+     * Objecto da classe ClientUI.
+     */
     private ClientUI clientFrame;
+    /**
+     * String com o nome do convívio.
+     */
     private String nomeConvivio;
+    /**
+     * Objecto da classe Pessoa.
+     */
     private Pessoa pessoa;
     /**
      * Creates new form InsideConvUI
-     * @param importantFrame
-     * @param clientFrame
-     * @param convivio
-     * @param pessoa
+     * @param importantFrame Objecto da classe MainClassUI.
+     * @param clientFrame Objecto da classe ClientUI.
+     * @param nomeConvivio String com o nome do convívio.
+     * @param pessoa Objecto da classe Pessoa.
      */
     public InsideConvUI(MainClassUI importantFrame, ClientUI clientFrame, String nomeConvivio, Pessoa pessoa) {
         this.importantFrame = importantFrame;
@@ -164,13 +172,13 @@ public class InsideConvUI extends javax.swing.JFrame {
     private void apresentarLocaisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apresentarLocaisButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ApresentacaoLocaisUI(importantFrame, this, nomeConvivio, pessoa, false).setVisible(true);
+        new ApresentacaoLocaisUI(importantFrame, this, nomeConvivio, false).setVisible(true);
     }//GEN-LAST:event_apresentarLocaisButtonActionPerformed
 
     private void seriacaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seriacaoButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new ApresentacaoLocaisUI(importantFrame, this, nomeConvivio, pessoa, true).setVisible(true);
+        new ApresentacaoLocaisUI(importantFrame, this, nomeConvivio, true).setVisible(true);
     }//GEN-LAST:event_seriacaoButtonActionPerformed
 
     private void verGuestListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGuestListButtonActionPerformed

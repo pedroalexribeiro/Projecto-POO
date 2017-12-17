@@ -1,18 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author pedro
+ * Classe MainClassUI primeiro menu que aparece para a criação de utilizadores 
+ * e login.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class MainClassUI extends javax.swing.JFrame {
+    /**
+     * ArrayList de convívios que estão disponíveis para o utilizador.
+     */
     private ArrayList<ConvivioDei> listaConvivios;
+    /**
+     * ArrayList de pessoas que têm "conta" no programa.
+     */
     private ArrayList<Pessoa> listaPessoas;
     /**
      * Creates new form MainClassUI
@@ -111,18 +113,36 @@ public class MainClassUI extends javax.swing.JFrame {
         new LoginUI(this).setVisible(true);
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    /**
+     *
+     * @return Arraylist de pessoas.
+     */
     public ArrayList<Pessoa> getListaPessoas() {
         return listaPessoas;
     }
 
+    /**
+     * Adiciona uma pessoa à lista de pessoas com "conta" no programa.
+     * @param p Objecto da classe Pessoa.
+     */
     public void addPessoa(Pessoa p){
         listaPessoas.add(p);
     }
     
+    /**
+     * Adiciona um convívio à lista de convívios disponíveis ao utilizador.
+     * @param c Objecto da classe ConvivioDei
+     */
     public void addConvivio(ConvivioDei c){
         listaConvivios.add(c);
     }
     
+    /**
+     * Devolve o objecto da Classe pessoa que tenha o nome passado por argumento, devolve
+     * null caso náo encontre ninguém.
+     * @param s String com o nome de uma pessoa.
+     * @return Objecto da classe Pessoa.
+     */
     public Pessoa searchPessoa(String s){
         for(Pessoa p : listaPessoas){
             if(s.equals(p.getNome())){
@@ -132,6 +152,13 @@ public class MainClassUI extends javax.swing.JFrame {
         return null;
     }
     
+    /**
+     * Verifica se a password escrita pelo utilizador é a password da "conta".
+     * Caso seja devolve "true", "false" caso contrário.
+     * @param p Objecto da classe Pessoa.
+     * @param password String com a palavra-passe da pessoa.
+     * @return Boolean.
+     */
     public boolean isPasswordCorrect(Pessoa p, String password){
         if(password.equals(p.getPassword())){
             return true;
@@ -140,10 +167,20 @@ public class MainClassUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @return ArrayList de convívios.
+     */
     public ArrayList<ConvivioDei> getListaConvivios() {
         return listaConvivios;
     }
     
+    /**
+     * Devolve o objecto da classe ConvivioDei que tem o nome passado como 
+     * argumento.
+     * @param nome String com o nome do convívio.
+     * @return Objecto da classe ConvivioDei.
+     */
     public ConvivioDei getConvivio(String nome){
         for(ConvivioDei cv : listaConvivios){
             if(cv.getNome().equals(nome)){
@@ -153,20 +190,39 @@ public class MainClassUI extends javax.swing.JFrame {
         return null;
     }
     
+    /**
+     * Inscreve uma pessoa num local de um determinado convívio.
+     * Devolve inteiro, 1 se for realizada com sucesso, -1 se não for possível 
+     * inscrever uma pessoa no local.
+     * @param c Objecto da classe ConvivioDei.
+     * @param p Objecto da classe Pessoa.
+     * @param l Objecto da classe Local.
+     * @return Inteiro.
+     */
     public int inscreverEmLocal(ConvivioDei c, Pessoa p, Local l){
         int index = listaConvivios.indexOf(c);
         int flag = listaConvivios.get(index).inscreverEmLocal(p,l);
         return flag;
     }
     
+    /**
+     * Desinscreve uma pessoa de um local de um determinado convívio.
+     * @param c Objecto da classe ConvivioDei.
+     * @param p Objecto da classe Pessoa.
+     * @param l Objecto da classe Local.
+     */
     public void desisncreverDeLocal(ConvivioDei c, Pessoa p, Local l){
         int index = listaConvivios.indexOf(c);
         listaConvivios.get(index).desinscreverDeLocal(p.getNome(), l);
     }
     
+    /**
+     *
+     */
     public void teste(){
         Bar teste1 = new Bar("Moelas", 60, 5, 45.6, 54.3);
         Bar teste3 = new Bar("24", 50, 5, 45.3, 43.4);
+        Aluno a;
         ConvivioDei teste2 = new ConvivioDei("Sou um teste");
         teste2.adicionarLocal(teste1);
         teste2.adicionarLocal(teste3);

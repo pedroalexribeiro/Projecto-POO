@@ -1,24 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author pedro
+ * Classe ClientUI serve para a inscrição e seleção do convívio que o utilzador
+ * pretende usufruir através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class ClientUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
+    /**
+     * Objecto da classe Pessoa.
+     */
     private Pessoa pessoa;
     /**
      * Creates new form ClientUI
-     * @param importantFrame
-     * @param pessoa
+     * @param importantFrame Um objecto da classe MainClassUI.
+     * @param pessoa Um objecto da classe Pessoa.
      */
     public ClientUI(MainClassUI importantFrame, Pessoa pessoa) {        
         this.importantFrame = importantFrame;
@@ -130,10 +132,13 @@ public class ClientUI extends javax.swing.JFrame {
         new InscreverConvivioUI(importantFrame, this, pessoa).setVisible(true);        
     }//GEN-LAST:event_inscreverConvButtonActionPerformed
 
+    /**
+     *
+     * @return objecto da classe Pessoa.
+     */
     public Pessoa getPessoa() {
         return pessoa;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton inscreverConvButton;

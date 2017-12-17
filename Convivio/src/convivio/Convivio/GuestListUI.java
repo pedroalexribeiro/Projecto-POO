@@ -1,24 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 /**
- *
- * @author pedro
+ * Classe GuestListUI serve para mostrar ao utilizador as pessoas de uma
+ * determinada guestlist através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class GuestListUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
+    /**
+     * Objecto da classe InsideConvUI.
+     */
     private InsideConvUI returnFrame;    
+    /**
+     * String com o nome do convívio.
+     */
     private String nomeConvivio;
+    /**
+     * ArrayList de Strings com os nomes dos bares do convívio.
+     */
     private ArrayList<String> bares;
     /**
      * Creates new form GuestListUI
+     * @param importantFrame Objecto da classe MainClassUI.
+     * @param returnFrame Objecto da classe InsideConvUI.
+     * @param nomeConvivio String com o nome do convívio.
      */
     public GuestListUI(MainClassUI importantFrame, InsideConvUI returnFrame, String nomeConvivio) {
         this.importantFrame = importantFrame;
@@ -115,6 +126,9 @@ public class GuestListUI extends javax.swing.JFrame {
         populateTextArea();
     }//GEN-LAST:event_baresComboBoxActionPerformed
 
+    /**
+     * Adiciona os nomes dos bares do convívio ao ArrayList.
+     */
     public void populateArray(){
         ConvivioDei convivio = importantFrame.getConvivio(nomeConvivio);
         ArrayList<Local> listaLocais = convivio.getListaLocais();
@@ -125,13 +139,18 @@ public class GuestListUI extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Verifica se o bar selecionado na ComboBox tem guestlist ou não. Caso tenha
+     * imprime no ecrã as pessoas que estão na guestlist caso contrário informa que a guestlist
+     * não tem pessoas de momento.
+     */
     private void populateTextArea(){
         String infoLocais = "";
         ConvivioDei convivio = importantFrame.getConvivio(nomeConvivio);
         ArrayList<Local> listaLocais = convivio.getListaLocais();
         for(Local local : listaLocais){
             if(local.isBar() && local.getNome().equals(baresComboBox.getSelectedItem().toString())){
-                infoLocais = ((Bar)local).getGuestListInfo();
+                infoLocais = ((Bar)local).getGuestListInfo(convivio.getInscricoes());
                 break;
             }
         }

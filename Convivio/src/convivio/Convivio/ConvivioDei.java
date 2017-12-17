@@ -1,22 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author pedro
+ *  Classe ConvivioDei que serve para criar convívios disponíveis para as pessoas.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class ConvivioDei {
+    /**
+     * String com o nome do convívio.
+     */
     private String nome;
+    /**
+     * ArrayList de objectos da classe Pessoa. Armazena as pessoas inscritas no convívio.
+     */
     private ArrayList<Pessoa> listaPessoasInscritas;
+    /**
+     * ArrayList de objectos da classe Local. Armazena os locais possíveis de visitar no convívio.
+     */
     private ArrayList<Local> listaLocais;
+    /**
+     * ArrayList de objectos da classe Inscricao. Armazena as inscrições das pessoas nos locais.
+     */
     private ArrayList<Inscricao> inscricoes;
 
+    /**
+     * Cria um objecto da classe ConvivioDei.
+     * @param nome String com o nome do convívio.
+     */
     public ConvivioDei(String nome) {
         this.nome = nome;
         this.listaPessoasInscritas = new ArrayList<>();
@@ -24,6 +35,12 @@ public class ConvivioDei {
         this.inscricoes = new ArrayList<>();
     }
     
+    /**
+     * Cria um objecto da classe ConvivioDei com um ArrayList de pessoas e locais já criados.
+     * @param nome String com o nome do convívio.
+     * @param listaPessoasInscritas ArrayList com objectos da classe Pessoa. Guarda as pessoas inscritas no convívio.
+     * @param listaLocais ArrayList com objectos da classe Local. Guarda os locais possiveis de visitar no convívio.
+     */
     public ConvivioDei(String nome, ArrayList<Pessoa> listaPessoasInscritas, ArrayList<Local> listaLocais){
         this.nome = nome;
         this.listaPessoasInscritas = listaPessoasInscritas;
@@ -31,34 +48,53 @@ public class ConvivioDei {
         this.inscricoes = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return ArrayList de inscrições.
+     */
     public ArrayList<Inscricao> getInscricoes() {
         return inscricoes;
     }
 
+    /**
+     *
+     * @return ArrayList de locais do convívio.
+     */
     public ArrayList<Local> getListaLocais() {
         return listaLocais;
     }
 
+    /**
+     *
+     * @return String com o nome do convívio.
+     */
     public String getNome() {
         return nome;
     }
     
+    /**
+     * Adiciona um local à lista de locais possíveis de visitar do convívio.
+     * @param local Objecto da classe Local.
+     */
     public void adicionarLocal(Local local){
         this.listaLocais.add(local);
     }
     
+    /**
+     * Adiciona uma pessoa à lista de pessoas inscritas no convívivo.
+     * @param pessoa Objecto da classe Pessoa.
+     */
     public void inscreverPessoa(Pessoa pessoa){
         this.listaPessoasInscritas.add(pessoa);
     }
     
-    public void printrLocaisOrdenado(){
-        System.out.println("Ainda estou por acabar.");
-    }
-    
-    public void printLocais(){
-        System.out.println("Ainda estou por acabar.");
-    }
-    
+    /**
+     * Verifica se uma pessoa já está registada ou não no convívio.
+     * Devolve "true" se a pessoa já estiver registada, devolve "false" caso 
+     * contrário.
+     * @param p Objecto da classe Pessoa.
+     * @return Boolean.
+     */
     public boolean isPersonRegistered(Pessoa p){
         if(listaPessoasInscritas.contains(p)){
             return true;
@@ -67,6 +103,11 @@ public class ConvivioDei {
         }
     }
     
+    /**
+     * Percorre a lista de locais e devolve uma String com a informação de todos
+     * os locais possíveis de visitar no convívio.
+     * @return String com a informação dos locais.
+     */
     public String getInfoLocais(){
         String infoLocal = "";
         for(Local local : listaLocais){
@@ -75,6 +116,12 @@ public class ConvivioDei {
         return infoLocal;
     }
     
+    /**
+     * Percorre a lista de locais e devolve uma String com a informação de todos os
+     * locais possíveis de visitar no convívio, a diferença está no facto de a 
+     * apresentação dos locais ser feita por ordem (decrescente pelo número de pessoas inscritas).
+     * @return Strign com a informação dos locais.
+     */
     public String getInfoLocaisOrdered(){
         String infoLocal = "";
         ArrayList<Local> listaTmp = listaLocais;
@@ -94,29 +141,40 @@ public class ConvivioDei {
         return infoLocal;
     }
     
+    /**
+     * Cria um objecto da classe Inscricao com uma pessoa e um local.
+     * Serve para inscrever uma pessoa num local do convívio.
+     * Devolve 1 em caso de sucesso e -1 caso a local tenha lotação máxima e este
+     * já tenha sido atingido.
+     * @param p Objecto da classe Pessoa.
+     * @param l Objecto da classe Local.
+     * @return Inteiro, 1 em caso de sucesso, -1 em case de insucesso.
+     */
     public int inscreverEmLocal(Pessoa p, Local l){
        if(l.isBar()){
-           int flag = ((Bar)l).addGuestList(p);
-           if(flag == 2){
+           if(((Bar)l).canRegister()){               
                 inscricoes.add(new Inscricao(p, l));
                 int index = listaLocais.indexOf(l);
                 listaLocais.get(index).incrementarPessoasIns();
-               return 2;
-           }else if(flag == 1){
-                inscricoes.add(new Inscricao(p, l));               
-                int index = listaLocais.indexOf(l);
-                listaLocais.get(index).incrementarPessoasIns();
-               return 1;
+                return 1;
            }else{
                return -1;
-           }           
+           }
+       }else{
+            inscricoes.add(new Inscricao(p, l));
+            int index = listaLocais.indexOf(l);
+            listaLocais.get(index).incrementarPessoasIns();
+            return 1;
        }
-       inscricoes.add(new Inscricao(p, l));
-       int index = listaLocais.indexOf(l);
-       listaLocais.get(index).incrementarPessoasIns();
-       return 1;
     }
     
+    /**
+     * Vai desinscrever uma pessoa de um local. Encontra o objecto que contém a
+     * pessoa e o local passado como argumentos e retira esse objecto da lista de 
+     * inscrições.
+     * @param p Objecto da classe Pessoa.
+     * @param local Objecto da classe Local.
+     */
     public void desinscreverDeLocal(String p, Local local){
         String l = local.getNome();
         Inscricao remover = null;

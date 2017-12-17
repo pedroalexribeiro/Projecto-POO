@@ -1,26 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 /**
- *
- * @author pedro
+ * Classe ListaConviviosUI serve para apresentar os diferentes convívios em que 
+ * a pessoa está inscrita através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class ListaConviviosUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
+    /**
+     * Objecto da classe ClientUI. 
+     */
     private ClientUI clientFrame;
+    /**
+     * ArrayList de Strings que contém o nome dos convívios em que a pessoa está inscrita.
+     */
     private ArrayList<String> convivios;
+    /**
+     * Objecto da classe Pessoa.
+     */
     private Pessoa pessoa;
     /**
      * Creates new form ListaConviviosUI
-     * @param importantFrame
-     * @param clientFrame
+     * @param importantFrame Objecto da classe MainClassUI.
+     * @param clientFrame Objecto da classe ClientUI.
+     * @param pessoa Objecto da classe Pessoa.
      */
     public ListaConviviosUI(MainClassUI importantFrame, ClientUI clientFrame, Pessoa pessoa) {
         this.importantFrame = importantFrame;
@@ -152,6 +161,9 @@ public class ListaConviviosUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_entrarButtonActionPerformed
 
+    /**
+     * Adiciona ao ArrayList o nome dos convívios em que a pessoa está inscrita.
+     */
     private void populateArray(){
         ArrayList<ConvivioDei> listaTotal = importantFrame.getListaConvivios();
         for(ConvivioDei conv : listaTotal){
@@ -161,6 +173,9 @@ public class ListaConviviosUI extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Escreve para o ecrã o locais do convívio selecionado na ComboBox.
+     */
     private void populateTextArea(){
         String infoLocais = "";
         ArrayList<ConvivioDei> listaTotal = importantFrame.getListaConvivios();

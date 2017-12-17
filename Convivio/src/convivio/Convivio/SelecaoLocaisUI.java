@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
@@ -12,17 +7,37 @@ import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
 /**
- *
- * @author pedro
+ * Classe SelecaoLocaisUI serve para o utilizador selecionar os 5 locais que 
+ * quer visitar no convívio através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class SelecaoLocaisUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
+    /**
+     * Objecto da classe InsideConvUI.
+     */
     private InsideConvUI returnFrame;    
+    /**
+     * String com o nome do convívio.
+     */
     private String nomeConvivio;
+    /**
+     * ArrayList de Strings com os nomes dos locais do convívio.
+     */
     private ArrayList<String> locais;
+    /**
+     * Objecto da classe Pessoa.
+     */
     private Pessoa pessoa;
     /**
      * Creates new form SelecaoLocaisUI
+     * @param importantFrame Objecto da classe MainClassUI.
+     * @param returnFrame Objecto da classe InsideConvUI.
+     * @param nomeConvivio String com o nome do convívio.
+     * @param pessoa Objecto da classe Pessoa.
      */
     public SelecaoLocaisUI(MainClassUI importantFrame, InsideConvUI returnFrame, String nomeConvivio, Pessoa pessoa) {
         this.importantFrame = importantFrame;
@@ -171,9 +186,7 @@ public class SelecaoLocaisUI extends javax.swing.JFrame {
                 }
                 if(!isAlreadyRegistered){
                     int flag = importantFrame.inscreverEmLocal(convivio, pessoa, l);
-                    if(flag == 2){
-                        JOptionPane.showMessageDialog(null, "A inscrição no bar foi feita com sucesso e foi adicionado à GuestList!", "InfoBox: Inscricao", JOptionPane.INFORMATION_MESSAGE);
-                    }else if(flag == 1){
+                    if(flag == 1){
                         JOptionPane.showMessageDialog(null, "A inscrição foi feita com sucesso!", "InfoBox: Inscricao", JOptionPane.INFORMATION_MESSAGE);
                     }else{
                         JOptionPane.showMessageDialog(null, "Não se consegui inscrever pois estava lotado!", "InfoBox: Inscricao", JOptionPane.INFORMATION_MESSAGE);
@@ -203,6 +216,9 @@ public class SelecaoLocaisUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_desinscreverButtonActionPerformed
 
+    /**
+     * Adiciona os nomes dos locais do convívio à ArrayList.
+     */
     private void populateArray(){
         ConvivioDei convivio = importantFrame.getConvivio(nomeConvivio);
         ArrayList<Local> listaTotal = convivio.getListaLocais();
@@ -211,6 +227,9 @@ public class SelecaoLocaisUI extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Adiciona à lista os nomes dos locais que o utlizador já está inscrito.
+     */
     private void populateList(){
         DefaultListModel dlm = new DefaultListModel();
         ConvivioDei convivio = importantFrame.getConvivio(nomeConvivio);

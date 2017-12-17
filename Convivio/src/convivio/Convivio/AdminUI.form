@@ -25,9 +25,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jLabel1" alignment="1" pref="400" max="32767" attributes="0"/>
-          <Component id="jButton1" alignment="1" max="32767" attributes="0"/>
-          <Component id="jButton2" alignment="1" max="32767" attributes="0"/>
+          <Component id="criarConvivioButton" alignment="1" max="32767" attributes="0"/>
+          <Component id="criarLocalButton" alignment="1" max="32767" attributes="0"/>
           <Component id="sairButton" alignment="1" max="32767" attributes="0"/>
+          <Component id="addLocalButton" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -36,9 +37,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="criarConvivioButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="criarLocalButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="addLocalButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="sairButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -53,14 +56,14 @@
         <Property name="text" type="java.lang.String" value="Bem-vindo Admin!"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="criarConvivioButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="text" type="java.lang.String" value="Criar novo convivio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="criarLocalButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton2"/>
+        <Property name="text" type="java.lang.String" value="Criar novo local"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="sairButton">
@@ -70,6 +73,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sairButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="addLocalButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adicionar locais ao convivio"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

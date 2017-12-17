@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 /**
- *
- * @author pedro
+ * Classe AdminUI serve para o administrador da aplicação criar e gerir os convívios.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class AdminUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
     /**
      * Creates new form AdminUI
-     * @param importantFrame
+     * @param importantFrame Objecto da classe MainClasseUI.
      */
     public AdminUI(MainClassUI importantFrame) {
         initComponents();
@@ -30,9 +28,10 @@ public class AdminUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        criarConvivioButton = new javax.swing.JButton();
+        criarLocalButton = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
+        addLocalButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -40,9 +39,9 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Bem-vindo Admin!");
 
-        jButton1.setText("jButton1");
+        criarConvivioButton.setText("Criar novo convivio");
 
-        jButton2.setText("jButton2");
+        criarLocalButton.setText("Criar novo local");
 
         sairButton.setText("Sair");
         sairButton.addActionListener(new java.awt.event.ActionListener() {
@@ -51,14 +50,17 @@ public class AdminUI extends javax.swing.JFrame {
             }
         });
 
+        addLocalButton.setText("Adicionar locais ao convivio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(criarConvivioButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(criarLocalButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(sairButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(addLocalButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,9 +68,11 @@ public class AdminUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(criarConvivioButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(criarLocalButton)
+                .addGap(18, 18, 18)
+                .addComponent(addLocalButton)
                 .addGap(18, 18, 18)
                 .addComponent(sairButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -87,8 +91,9 @@ public class AdminUI extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton addLocalButton;
+    private javax.swing.JButton criarConvivioButton;
+    private javax.swing.JButton criarLocalButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton sairButton;
     // End of variables declaration//GEN-END:variables

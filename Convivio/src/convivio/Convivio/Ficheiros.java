@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.io.BufferedReader;
@@ -20,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Duarte
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class Ficheiros {
     
@@ -104,8 +99,8 @@ public class Ficheiros {
             while((aux=br.readLine())!=null){
                 parts = aux.split("-");
                 if(parts[0].compareTo("AD")==0){
-                    Local ad = new AreaDesportiva(parts[1],Double.parseDouble(parts[2]),Double.parseDouble(parts[3]));
-                    place.add(ad);
+                    //AreaDesportiva ad = new AreaDesportiva(parts[1],Double.parseDouble(parts[2]),Double.parseDouble(parts[3]));
+                    //place.add(ad);
                 }
                 else if(parts[0].compareTo("B")==0){
                     Local b = new Bar(parts[1],Integer.parseInt(parts[2]),Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]));

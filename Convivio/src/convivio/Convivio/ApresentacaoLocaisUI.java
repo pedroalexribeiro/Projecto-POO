@@ -1,31 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
-
 /**
- *
- * @author pedro
+ * Classe ApresentacaoLocaisUI serve para mostrar ao utilizador 
+ * quais os locais disponíveis de um convívio através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class ApresentacaoLocaisUI extends javax.swing.JFrame {
-    private MainClassUI importantFrame;
-    private InsideConvUI returnFrame;    
-    private String nomeConvivio;
-    private ArrayList<String> locais;
-    private Pessoa pessoa;
     /**
-     * Creates new form ApresentacaoLocaisUI
+     * Objecto da classe MainClassUI.
      */
-    public ApresentacaoLocaisUI(MainClassUI importantFrame, InsideConvUI returnFrame, String nomeConvivio, Pessoa pessoa, boolean order) {
+    private MainClassUI importantFrame;
+    /**
+     * Objecto da classe InsideConvUI.
+     */
+    private InsideConvUI returnFrame;   
+    /**
+     * String com o nome do convívio.
+     */
+    private String nomeConvivio;
+    /**
+     * Creates new form ApresentacaoLocaisUI.
+     * @param importantFrame Um objeto da classe MainClassUI.
+     * @param returnFrame Um objecto da classe InsideConvUI.
+     * @param nomeConvivio String do nome do convívio cujo os locais quer mostrar.
+     * @param order Boolean para verificar se é apresentação dos locais é ordenada, "true" se for para mostrar os locais ordenados por pessoas inscritas.
+     */
+    public ApresentacaoLocaisUI(MainClassUI importantFrame, InsideConvUI returnFrame, String nomeConvivio, boolean order) {
         this.importantFrame = importantFrame;
         this.returnFrame = returnFrame;
         this.nomeConvivio = nomeConvivio;
-        this.pessoa = pessoa;
-        this.locais = new ArrayList<>();
         initComponents();  
         if(order){
             populateTextAreaOrdered();
@@ -103,6 +107,11 @@ public class ApresentacaoLocaisUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_retornarButtonActionPerformed
 
+    /**
+     * Tem como objectivo escrever para a TextArea da janela a descrição dos locais
+     * do convívio, caso o convívio não tenha locais apresenta a informação de que 
+     * o convívio não possui locais para visitar.
+     */
     private void populateTextArea(){
         String infoLocais = "";
         ArrayList<ConvivioDei> listaTotal = importantFrame.getListaConvivios();
@@ -119,6 +128,12 @@ public class ApresentacaoLocaisUI extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Caso a criação do objecto seja feita para este mostrar a lista por ordem de pessoas
+     * inscritas, é chamada este método em vez do "populateTextArea" tendo este o mesmo objectivo.
+     * A diferença sendo que este ordena a informação que apresenta, sendo impressos primeiro na TextArea
+     * os locais com mais pessoas inscritas.
+     */
     private void populateTextAreaOrdered(){
         String infoLocais = "";
         ArrayList<ConvivioDei> listaTotal = importantFrame.getListaConvivios();

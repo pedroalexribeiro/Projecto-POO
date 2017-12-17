@@ -1,22 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author pedro
+ * Classe NewProfessorUI serve para a criação de uma nova pessoa, do tipo professor
+ * através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class NewProfessorUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
     /**
      * Creates new form NewProfessorUI
-     * @param importantFrame
+     * @param importantFrame Objecto da classe MainClassUI.
      */
     public NewProfessorUI(MainClassUI importantFrame) {
         initComponents();

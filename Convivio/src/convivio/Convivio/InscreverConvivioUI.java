@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
@@ -10,16 +5,32 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author pedro
+ * Classe InscreverConvivioUI serve para inscrever um utilizador num determinado
+ * convívio através de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class InscreverConvivioUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
+    /**
+     * Objecto da classe ClientUI.
+     */
     private ClientUI clientFrame;
+    /**
+     * ArraYlist de Strings com o nome dos diferentes convívios.
+     */
     private ArrayList<String> convivios;
+    /**
+     * Objecto da classe Pessoa.
+     */
     private Pessoa pessoa;
     /**
      * Creates new form InscreverConvivioUI
+     * @param importantFrame Objecto da classe MainClassUI.
+     * @param clientFrame Objecto da classe ClientUI.
+     * @param pessoa Objecto da classe Pessoa.
      */
     public InscreverConvivioUI(MainClassUI importantFrame, ClientUI clientFrame, Pessoa pessoa) {
         this.importantFrame = importantFrame;
@@ -158,6 +169,9 @@ public class InscreverConvivioUI extends javax.swing.JFrame {
         populateTextArea();
     }//GEN-LAST:event_conviviosComboBoxActionPerformed
 
+    /**
+     * Adiciona o nome dos convívios ao ArrayList.
+     */
     public void populateArray(){
         ArrayList<ConvivioDei> listaTotal = importantFrame.getListaConvivios();
         for(ConvivioDei conv : listaTotal){
@@ -165,6 +179,11 @@ public class InscreverConvivioUI extends javax.swing.JFrame {
         }
     } 
     
+    /**
+     * Imprime no ecrã os locais do convívio selecionado na ComboBox, caso este não tenha
+     * locais possíveis de inscrever em é informado que o convívio não tem locais para 
+     * apresentar.
+     */
     private void populateTextArea(){
         String infoLocais = "";
         ArrayList<ConvivioDei> listaTotal = importantFrame.getListaConvivios();

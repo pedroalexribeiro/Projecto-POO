@@ -1,21 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package convivio.Convivio;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author pedro
+ * Classe NewWorkerUI serve para a criação de uma pessoa do tipo funcionário através
+ * de uma interface gráfica.
+ * @author Pedro Ribeiro e Duarte Carvalho
  */
 public class NewWorkerUI extends javax.swing.JFrame {
+    /**
+     * Objecto da classe MainClassUI.
+     */
     private MainClassUI importantFrame;
     /**
      * Creates new form NewWorkerUI
+     * @param importantFrame Objecto da classe MainClassUI.
      */
     public NewWorkerUI(MainClassUI importantFrame) {
         initComponents();
