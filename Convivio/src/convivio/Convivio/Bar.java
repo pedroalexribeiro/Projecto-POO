@@ -71,21 +71,17 @@ public class Bar extends Local implements Serializable{
         guestlist.clear();
         boolean flag = true;
         boolean flag2 = true;
-        while(flag){
-            for(Inscricao ins : inscricoes){
-                if(ins.getNomeLocal().equals(getNome())){
-                    if(ins.getPessoa().getPerfil().equals("Boémio")){
-                        guestlist.add(ins.getPessoa());
-                    }
-                }
-                if(guestlist.size() >= (tamanhoGuestlist*lotacao)){
-                   flag2 = false;
-                   break;
+        for(Inscricao ins : inscricoes){
+            if(ins.getNomeLocal().equals(getNome())){
+                if(ins.getPessoa().getPerfil().equals("Boémio")){
+                    guestlist.add(ins.getPessoa());
                 }
             }
-            flag = false;            
+            if(guestlist.size() >= (tamanhoGuestlist*lotacao)){
+               break;
+            }
         }
-        while(flag2){
+        if(guestlist.size() < (tamanhoGuestlist*lotacao)){
             for(Inscricao ins : inscricoes){
                 if(ins.getNomeLocal().equals(getNome())){
                     if(!guestlist.contains(ins.getPessoa())){
@@ -96,7 +92,6 @@ public class Bar extends Local implements Serializable{
                    break;
                 }
             }
-            flag2 = false;
         }
         String rt = "";
         for(Pessoa p : guestlist){

@@ -1,12 +1,13 @@
 package convivio.Convivio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *  Classe ConvivioDei que serve para criar convívios disponíveis para as pessoas.
  * @author Pedro Ribeiro e Duarte Carvalho
  */
-public class ConvivioDei {
+public class ConvivioDei implements Serializable{
     /**
      * String com o nome do convívio.
      */
@@ -48,6 +49,14 @@ public class ConvivioDei {
         this.inscricoes = new ArrayList<>();
     }
 
+    /**
+     * Devolve a lista de pessoas inscritas no Convivio.
+     * @return ArrayList de objectos Pessoa
+     */
+    public ArrayList<Pessoa> getListaPessoasInscritas() {
+        return listaPessoasInscritas;
+    }
+    
     /**
      *
      * @return ArrayList de inscrições.
@@ -95,12 +104,13 @@ public class ConvivioDei {
      * @param p Objecto da classe Pessoa.
      * @return Boolean.
      */
-    public boolean isPersonRegistered(Pessoa p){
-        if(listaPessoasInscritas.contains(p)){
-            return true;
-        }else{
-            return false;
+    public boolean isPersonRegistered(String p){
+        for(Pessoa pessoa : listaPessoasInscritas){
+            if(pessoa.getNome().equals(p)){
+                return true;
+            }
         }
+        return false;
     }
     
     /**

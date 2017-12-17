@@ -151,7 +151,7 @@ public class InscreverConvivioUI extends javax.swing.JFrame {
                 break;
             }
         }if(convivio != null){
-            if(convivio.isPersonRegistered(pessoa)){
+            if(convivio.isPersonRegistered(pessoa.getNome())){
                 JOptionPane.showMessageDialog(null, "Já está inscrito neste convívio!", "InfoBox: Repetição", JOptionPane.INFORMATION_MESSAGE);
             }else{
                 convivio.inscreverPessoa(pessoa);

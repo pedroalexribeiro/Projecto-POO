@@ -166,7 +166,7 @@ public class ListaConviviosUI extends javax.swing.JFrame {
     private void populateArray(){
         ArrayList<ConvivioDei> listaTotal = importantFrame.getListaConvivios();
         for(ConvivioDei conv : listaTotal){
-            if(conv.isPersonRegistered(clientFrame.getPessoa())){
+            if(conv.isPersonRegistered(clientFrame.getPessoa().getNome())){
                 convivios.add(conv.getNome());
             }
         }

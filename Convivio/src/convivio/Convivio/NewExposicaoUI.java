@@ -88,7 +88,7 @@ public class NewExposicaoUI extends javax.swing.JFrame {
             }
         });
 
-        convivioComboBox.setSelectedItem(new DefaultComboBoxModel(convivios.toArray()));
+        convivioComboBox.setModel(new DefaultComboBoxModel(convivios.toArray()));
 
         jLabel8.setText("Convívio:");
 

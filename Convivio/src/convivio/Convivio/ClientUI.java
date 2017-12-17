@@ -108,7 +108,7 @@ public class ClientUI extends javax.swing.JFrame {
         boolean open = false;
         ArrayList<ConvivioDei> listaConv = importantFrame.getListaConvivios();
         for(ConvivioDei conv : listaConv){
-            if(conv.isPersonRegistered(pessoa)){
+            if(conv.isPersonRegistered(pessoa.getNome())){
                 open = true;
                 break;
             }

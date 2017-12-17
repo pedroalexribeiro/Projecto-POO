@@ -1,6 +1,15 @@
 package convivio.Convivio;
 
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +33,8 @@ public class MainClassUI extends javax.swing.JFrame {
         initComponents();
         this.listaConvivios = new ArrayList<>();
         this.listaPessoas = new ArrayList<>();
-        teste();
+        readFichPessoas();
+        readFichConvivios();
     }
 
     /**
@@ -108,6 +118,8 @@ public class MainClassUI extends javax.swing.JFrame {
 
     private void fecharButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharButtonActionPerformed
         // TODO add your handling code here:
+        writeFichPessoas();
+        writeFichConv();
         this.setVisible(false);
         this.dispose();
         System.exit(0);
@@ -259,17 +271,174 @@ public class MainClassUI extends javax.swing.JFrame {
     }
   
     /**
-     *
+     * Lê do ficheiro de text das pessoas inscritas no programa.
      */
-    public void teste(){
-        Bar teste1 = new Bar("Moelas", 60, 5, 45.6, 54.3);
-        Bar teste3 = new Bar("24", 50, 5, 45.3, 43.4);
-        Aluno a;
-        ConvivioDei teste2 = new ConvivioDei("Sou um teste");
-        teste2.adicionarLocal(teste1);
-        teste2.adicionarLocal(teste3);
-        listaConvivios.add(teste2);
+    public void lerTxtPessoas(){
+        try{
+            File f = new File("Pessoas.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            String aux;
+            String [] parts;            
+            while((aux=br.readLine())!=null){
+                parts = aux.split("-");
+                if(parts[0].compareTo("A")==0){
+                    Aluno a = new Aluno(parts[1],parts[2],parts[3],parts[4]);
+                    listaPessoas.add(a);
+                }
+                else if(parts[0].compareTo("P")==0){
+                    Professor p = new Professor(parts[1],parts[2],parts[3],parts[4]);
+                    listaPessoas.add(p);
+                }
+                else if(parts[0].compareTo("F")==0){
+                    Funcionario fc = new Funcionario(parts[1],parts[2],parts[3],parts[4]);
+                    listaPessoas.add(fc);
+                }
+            }
+            br.close();
+        }
+        catch (IOException ex) {
+            System.out.println(ex);
+        }
     }
+    
+    /**
+     * Lê o ficheiro de objectos das pessoas inscritas.
+     */
+    public void readFichPessoas(){
+        try{
+            File f = new File("Pessoas.obj");
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            listaPessoas = (ArrayList<Pessoa>)ois.readObject();
+            ois.close();
+        }
+        catch (FileNotFoundException ex) {
+            lerTxtPessoas();
+            writeFichPessoas();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    /**
+     * Escreve para o ficheiro de objectos as pessoas inscritas.
+     */
+    public void writeFichPessoas(){
+        try{
+            File f = new File("Pessoas.obj");
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);            
+            oos.writeObject(listaPessoas);
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    /**
+     * Lê do ficheiro de texto os convivios disponiveis.
+     */
+    public void lerTxtConvivioDei(){
+        try{
+            File f = new File("ConvivioDei.txt");
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            String aux,aux2;
+            String [] parts;
+            String [] partsPessoa;
+            String [] partsLocal;
+            ArrayList<Pessoa> pessoasIns = new ArrayList();
+            ArrayList<Local> locaisIns = new ArrayList();
+            ArrayList<String> desportos = new ArrayList();
+            
+            while((aux=br.readLine())!=null){
+                parts = aux.split("-");
+                String []helper = parts[1].split(";");
+                for(int i=0;i<helper.length;i++){   
+                    Pessoa p = searchPessoa(helper[i]);
+                    if(p!=null){
+                        pessoasIns.add(searchPessoa(helper[i]));   
+                    }
+                }
+                String []helper2= parts[2].split(";");
+                for(int i=0;i<helper2.length;i++){
+                    partsLocal = helper2[i].split(",");
+                    if(partsLocal[0].compareTo("AD")==0){
+                        desportos.clear();
+                        String []ajudante = partsLocal[4].split("/");
+                        for(int j=0;j<ajudante.length;j++){
+                            desportos.add(ajudante[i]);
+                        }
+                        AreaDesportiva ad = new AreaDesportiva(partsLocal[1],Double.parseDouble(partsLocal[2]),Double.parseDouble(partsLocal[3]),desportos);
+                        locaisIns.add(ad);
+                    }
+                    else if(partsLocal[0].compareTo("B")==0){
+                        Bar b = new Bar(partsLocal[1],Integer.parseInt(partsLocal[2]),Double.parseDouble(partsLocal[3]),Double.parseDouble(partsLocal[4]),Double.parseDouble(partsLocal[5]));
+                        locaisIns.add(b);
+                    }
+                    else if(partsLocal[0].compareTo("E")==0){
+                        Exposicao ex = new Exposicao(partsLocal[1],partsLocal[2],Double.parseDouble(partsLocal[3]),Double.parseDouble(partsLocal[4]),Double.parseDouble(partsLocal[5]));
+                        locaisIns.add(ex);
+                    }
+                    else if(partsLocal[0].compareTo("J")==0){
+                        Jardim j = new Jardim(partsLocal[1],Double.parseDouble(partsLocal[2]),Double.parseDouble(partsLocal[3]),Double.parseDouble(partsLocal[4]));
+                        locaisIns.add(j);   
+                    }
+                }   
+                ConvivioDei cd = new ConvivioDei(parts[0],pessoasIns,locaisIns);
+                listaConvivios.add(cd);
+            }
+            br.close();
+        }
+        catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
+        catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    /**
+     * Lê o ficheiro de objectos dos convívios.
+     */
+    public void readFichConvivios(){        
+        try{
+            File f = new File("ConvivioDei.obj");
+            FileInputStream fis = new FileInputStream(f);
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            listaConvivios = (ArrayList<ConvivioDei>)ois.readObject();
+            ois.close();
+        }
+        catch (FileNotFoundException ex) {
+            lerTxtConvivioDei();
+            writeFichConv();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    /**
+     * Escreve para o ficheiro de objectos os convívios.
+     */
+    public void writeFichConv(){
+        try{
+            File f = new File("ConvivioDei.obj");
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);            
+            oos.writeObject(listaConvivios);
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    } 
+    
     /**
      * @param args the command line arguments
      */
