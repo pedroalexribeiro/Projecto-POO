@@ -1,5 +1,7 @@
 package convivio.Convivio;
 
+import java.util.ArrayList;
+
 /**
  * Classe AdminUI serve para o administrador da aplicação criar e gerir os convívios.
  * @author Pedro Ribeiro e Duarte Carvalho
@@ -31,7 +33,6 @@ public class AdminUI extends javax.swing.JFrame {
         criarConvivioButton = new javax.swing.JButton();
         criarLocalButton = new javax.swing.JButton();
         sairButton = new javax.swing.JButton();
-        addLocalButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -40,6 +41,11 @@ public class AdminUI extends javax.swing.JFrame {
         jLabel1.setText("Bem-vindo Admin!");
 
         criarConvivioButton.setText("Criar novo convivio");
+        criarConvivioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criarConvivioButtonActionPerformed(evt);
+            }
+        });
 
         criarLocalButton.setText("Criar novo local");
 
@@ -50,8 +56,6 @@ public class AdminUI extends javax.swing.JFrame {
             }
         });
 
-        addLocalButton.setText("Adicionar locais ao convivio");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -60,7 +64,6 @@ public class AdminUI extends javax.swing.JFrame {
             .addComponent(criarConvivioButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(criarLocalButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(sairButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(addLocalButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,8 +74,6 @@ public class AdminUI extends javax.swing.JFrame {
                 .addComponent(criarConvivioButton)
                 .addGap(18, 18, 18)
                 .addComponent(criarLocalButton)
-                .addGap(18, 18, 18)
-                .addComponent(addLocalButton)
                 .addGap(18, 18, 18)
                 .addComponent(sairButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -89,9 +90,47 @@ public class AdminUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_sairButtonActionPerformed
 
+    private void criarConvivioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarConvivioButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new NewConvivioUI(this).setVisible(true);
+    }//GEN-LAST:event_criarConvivioButtonActionPerformed
+
+    /**
+    * Adiciona um convívio à lista de convivios.
+    * @param c Objecto da classe Convivio.
+    */
+   public void addConvivio(ConvivioDei c){
+       importantFrame.addConvivio(c);
+   }
+    
+    /**
+    * Verifica se já existe algum convívio com o nome passado como argumento.
+    * @param s string com o nome de um convívio.
+    * @return Boolean.
+    */
+    public boolean hasSameNameConvivio(String s){
+        return importantFrame.hasSameNameConvivio(s);
+    }
+     
+    /**
+    * Adiciona um local à lista de locais de um convívio.
+    * @param nome String com o nome do convívio ao qual queremos adicionar o local.
+    * @param l Objecto local que queremos adicionar ao convivio.
+    */
+    public void adicionarLocalAConvivio(String nome, Local l){
+        importantFrame.adicionarLocalAConvivio(nome,l);
+    }
+     
+    /**
+     *
+     * @return ArrayList de convívios.
+     */
+    public ArrayList<ConvivioDei> getListaConvivios() {
+        return importantFrame.getListaConvivios();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addLocalButton;
     private javax.swing.JButton criarConvivioButton;
     private javax.swing.JButton criarLocalButton;
     private javax.swing.JLabel jLabel1;

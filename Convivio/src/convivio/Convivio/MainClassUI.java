@@ -217,6 +217,35 @@ public class MainClassUI extends javax.swing.JFrame {
     }
     
     /**
+     * Verifica se já exite algum convívio com o nome passado como parametro, devolve
+     * true se já existir.
+     * @param s String com o nome de um convívio.
+     * @return 
+     */
+    public boolean hasSameNameConvivio(String s){
+        for(ConvivioDei conv : listaConvivios){
+            if(conv.getNome().equals(s)){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Adiciona um local à lista de locais de um convívio.
+     * @param nome String com o nome do convívio ao qual queremos adicionar o local.
+     * @param l Objecto local que queremos adicionar ao convivio.
+     */
+    public void adicionarLocalAConvivio(String nome, Local l){
+        for(ConvivioDei conv : listaConvivios){
+            if(conv.getNome().equals(nome)){
+                conv.adicionarLocal(l);
+                break;
+            }
+        }
+    }
+  
+    /**
      *
      */
     public void teste(){

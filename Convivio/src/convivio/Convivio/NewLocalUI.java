@@ -1,22 +1,22 @@
 package convivio.Convivio;
 
 /**
- * Classe NewUserUI serve para o utilzador que tipo de pessoa vai criar, ou "Professor"
- * ou "Funcionario" ou "Aluno".
+ * Classe NewLocalUI serve para criar um local que pode ser "Bar",
+ * "Jardim", "Exposicao" ou "AreaDesportiva".
  * @author Pedro Ribeiro e Duarte Carvalho
  */
-public class NewUserUI extends javax.swing.JFrame {
+public class NewLocalUI extends javax.swing.JFrame {
     /**
-     * Objecto da classe MainClassUI.
+     * Objecto da classe AdminUI.
      */
-    private MainClassUI importantFrame;
+    private AdminUI returnFrame;
     /**
      * Creates new form NewUserUI
-     * @param importantFrame Objecto da classe MainClassUI.
+     * @param returnFrame Objecto da classe AdminUI.
      */
-    public NewUserUI(MainClassUI importantFrame) {
+    public NewLocalUI(AdminUI returnFrame) {
         initComponents();
-        this.importantFrame = importantFrame;
+        this.returnFrame = returnFrame;
     }
 
     /**
@@ -38,11 +38,11 @@ public class NewUserUI extends javax.swing.JFrame {
         setResizable(false);
 
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Criar um novo utilizador");
+        titleLabel.setText("Criar um novo local");
 
-        opcoesUserComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aluno", "Funcionário", "Professor" }));
+        opcoesUserComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bar", "Jardim", "Exposição", "Area Desportiva" }));
 
-        fraseLabel.setText("Qual é o tipo de utilizador:");
+        fraseLabel.setText("Qual é o tipo de local é:");
 
         criarButton.setText("Criar");
         criarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +64,7 @@ public class NewUserUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 27, Short.MAX_VALUE)
+                .addGap(0, 42, Short.MAX_VALUE)
                 .addComponent(fraseLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(opcoesUserComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -99,23 +99,27 @@ public class NewUserUI extends javax.swing.JFrame {
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        importantFrame.setVisible(true);
+        returnFrame.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void criarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarButtonActionPerformed
         // TODO add your handling code here:
-        if(opcoesUserComboBox.getSelectedItem().toString().equals("Aluno")){
+        if(opcoesUserComboBox.getSelectedItem().toString().equals("Bar")){
             this.setVisible(false);
-            new NewStudentUI(importantFrame).setVisible(true);
+            new NewBarUI(returnFrame).setVisible(true);
             this.dispose();
-        }else if(opcoesUserComboBox.getSelectedItem().toString().equals("Professor")){
+        }else if(opcoesUserComboBox.getSelectedItem().toString().equals("Exposição")){
             this.setVisible(false);
-            new NewProfessorUI(importantFrame).setVisible(true);
+            new NewExposicaoUI(returnFrame).setVisible(true);
             this.dispose();
-        }else if(opcoesUserComboBox.getSelectedItem().toString().equals("Funcionário")){
+        }else if(opcoesUserComboBox.getSelectedItem().toString().equals("Jardim")){
             this.setVisible(false);
-            new NewWorkerUI(importantFrame).setVisible(true);
+            new NewJardimUI(returnFrame).setVisible(true);
+            this.dispose();
+        }else if(opcoesUserComboBox.getSelectedItem().toString().equals("Area Desportiva")){
+            this.setVisible(false);
+            new NewAreaDesportivaUI(returnFrame).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_criarButtonActionPerformed
