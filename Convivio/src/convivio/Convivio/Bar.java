@@ -41,7 +41,7 @@ public class Bar extends Local implements Serializable{
     }
 
     /**
-     *
+     * Devolve valor do consumo mínimo obrigatório.
      * @return Valor do consumo mínimo obrigatório.
      */
     @Override

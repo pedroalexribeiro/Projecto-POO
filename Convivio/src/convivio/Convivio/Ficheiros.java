@@ -30,15 +30,15 @@ public class Ficheiros {
             while((aux=br.readLine())!=null){
                 parts = aux.split("-");
                 if(parts[0].compareTo("A")==0){
-                    Pessoa a = new Aluno(parts[1],parts[2],parts[3],parts[4]);
+                    Aluno a = new Aluno(parts[1],parts[2],parts[3],parts[4]);
                     person.add(a);
                 }
                 else if(parts[0].compareTo("P")==0){
-                    Pessoa p = new Professor(parts[1],parts[2],parts[3],parts[4]);
+                    Professor p = new Professor(parts[1],parts[2],parts[3],parts[4]);
                     person.add(p);
                 }
                 else if(parts[0].compareTo("F")==0){
-                    Pessoa fc = new Funcionario(parts[1],parts[2],parts[3],parts[4]);
+                    Funcionario fc = new Funcionario(parts[1],parts[2],parts[3],parts[4]);
                     person.add(fc);
                 }
             }
@@ -94,24 +94,32 @@ public class Ficheiros {
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             String aux;
+            int i;
             String [] parts = new String[6];
+            ArrayList<String> desportos = new ArrayList();
             
             while((aux=br.readLine())!=null){
                 parts = aux.split("-");
                 if(parts[0].compareTo("AD")==0){
+                    String []ajudante = parts[4].split(";");
+                    for(i=0;i<ajudante.length;i++){
+                        desportos.add(ajudante[i]);
+                    }
+                    AreaDesportiva ad = new AreaDesportiva(parts[1],Double.parseDouble(parts[2]),Double.parseDouble(parts[3]),desportos);
+                    place.add(ad);
                     //AreaDesportiva ad = new AreaDesportiva(parts[1],Double.parseDouble(parts[2]),Double.parseDouble(parts[3]));
                     //place.add(ad);
                 }
                 else if(parts[0].compareTo("B")==0){
-                    Local b = new Bar(parts[1],Integer.parseInt(parts[2]),Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]));
+                    Bar b = new Bar(parts[1],Integer.parseInt(parts[2]),Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]));
                     place.add(b);
                 }
                 else if(parts[0].compareTo("E")==0){
-                    Local ex = new Exposicao(parts[1],parts[2],Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]));
+                    Exposicao ex = new Exposicao(parts[1],parts[2],Double.parseDouble(parts[3]),Double.parseDouble(parts[4]),Double.parseDouble(parts[5]));
                     place.add(ex);
                 }
                 else if(parts[0].compareTo("J")==0){
-                    Local j = new Jardim(parts[1],Double.parseDouble(parts[2]),Double.parseDouble(parts[3]),Double.parseDouble(parts[4]));
+                    Jardim j = new Jardim(parts[1],Double.parseDouble(parts[2]),Double.parseDouble(parts[3]),Double.parseDouble(parts[4]));
                     place.add(j);
                 }
                 
@@ -167,15 +175,62 @@ public class Ficheiros {
             File f = new File("ConvivioDei.txt");
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
-            String aux;
-            String [] parts = new String[4];
+            String aux,aux2;
+            int i;
+            String [] parts;
+            String [] partsPessoa = new String[5];
+            String [] partsLocal = new String[6];
+            ArrayList<Pessoa> pessoasIns = new ArrayList();
+            ArrayList<Local> locaisIns = new ArrayList();
+            ArrayList<String> desportos = new ArrayList();
             
             while((aux=br.readLine())!=null){
                 parts = aux.split("-");
-                ConvivioDei cd = new ConvivioDei(parts[1]);
+                String []helper = parts[1].split(";");
+                for(i=0;i<helper.length;i++){
+                    partsPessoa = helper[i].split(",");
+                    if(partsPessoa[0].compareTo("A")==0){
+                        Aluno a = new Aluno(partsPessoa[1],partsPessoa[2],partsPessoa[3],partsPessoa[4]);
+                        pessoasIns.add(a);
+                    }
+                    else if(partsPessoa[0].compareTo("P")==0){
+                        Professor p = new Professor(partsPessoa[1],partsPessoa[2],partsPessoa[3],partsPessoa[4]);
+                        pessoasIns.add(p);
+                    }
+                    else if(partsPessoa[0].compareTo("F")==0){
+                        Funcionario fc = new Funcionario(partsPessoa[1],partsPessoa[2],partsPessoa[3],partsPessoa[4]);
+                        pessoasIns.add(fc);
+                    }
+                }
+                String []helper2= parts[2].split(";");
+                for(i=0;i<helper2.length;i++){
+                    partsPessoa = helper2[i].split(",");
+                    if(partsPessoa[0].compareTo("AD")==0){
+                        String []ajudante = partsPessoa[4].split("/");
+                        for(i=0;i<ajudante.length;i++){
+                            desportos.add(ajudante[i]);
+                        }
+                        AreaDesportiva ad = new AreaDesportiva(partsPessoa[1],Double.parseDouble(partsPessoa[2]),Double.parseDouble(partsPessoa[3]),desportos);
+                        locaisIns.add(ad);
+                    }
+                    else if(parts[0].compareTo("B")==0){
+                        Bar b = new Bar(partsPessoa[1],Integer.parseInt(partsPessoa[2]),Double.parseDouble(partsPessoa[3]),Double.parseDouble(partsPessoa[4]),Double.parseDouble(partsPessoa[5]));
+                        locaisIns.add(b);
+                    }
+                    else if(parts[0].compareTo("E")==0){
+                        Exposicao ex = new Exposicao(partsPessoa[1],partsPessoa[2],Double.parseDouble(partsPessoa[3]),Double.parseDouble(partsPessoa[4]),Double.parseDouble(partsPessoa[5]));
+                        locaisIns.add(ex);
+                    }
+                    else if(parts[0].compareTo("J")==0){
+                        Jardim j = new Jardim(partsPessoa[1],Double.parseDouble(partsPessoa[2]),Double.parseDouble(partsPessoa[3]),Double.parseDouble(partsPessoa[4]));
+                        locaisIns.add(j);   
+                    }
+                }
+                
+                ConvivioDei cd = new ConvivioDei(parts[0],pessoasIns,locaisIns);
                 convivio.add(cd);
-            br.close();
             }
+            br.close();
         }
         catch (FileNotFoundException ex) {
             System.out.println(ex);
